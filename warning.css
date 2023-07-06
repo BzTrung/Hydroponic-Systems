@@ -103,8 +103,9 @@ p {
   flex-direction: column;
   justify-content: space-between;
   align-self: flex-end;
+  width: 100%;
   height: fit-content;
-  padding: 12% 1.25rem 12px;
+  padding: 12% 1.25rem 5%;
   background: linear-gradient(
     180deg,
     hsla(0, 0%, 0%, 0) 0%,
@@ -124,7 +125,7 @@ p {
   width: -moz-fit-content; /* Prefijo necesario para Firefox  */
 }
 
-.card__title::after {
+/* .card__title::after {
   content: "";
   position: absolute;
   height: 0.3125rem;
@@ -132,7 +133,7 @@ p {
   bottom: calc((1.25rem - 0.5rem) * -1);
   left: -1.25rem;
   background-color: var(--brand-color);
-}
+} */
 
 @media (any-hover: hover) and (any-pointer: fine) {
   .card__content {

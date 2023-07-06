@@ -22,15 +22,13 @@ valueTemp.on("value", (snap) => {
 
 var valueStage = firebase.database().ref("grown_up");
 valueStage.on("value", (snap) => {
-  if(snap.val()==0){
+  if (snap.val() == 0) {
     console.log("Stage: cây non  ");
     document.getElementById("plant_stage").innerHTML = " cây con";
-  } 
-  else {
+  } else {
     console.log("Stage: cây non  ");
     document.getElementById("plant_stage").innerHTML = " cây trưởng thành";
   }
-  
 });
 
 var valueTemp = firebase.database().ref("Value").child("temp_air");
@@ -66,7 +64,7 @@ valueppm.on("value", (snap) => {
 var valueppm = firebase.database().ref("Value").child("lux");
 valueppm.on("value", (snap) => {
   console.log("lux: " + snap.val());
-  document.getElementById("light_int").innerHTML = snap.val() + "%";
+  document.getElementById("light_int").innerHTML = snap.val() + " lux";
 });
 
 //-------------------------MANUAL CONTROL------------------------------
@@ -129,7 +127,6 @@ function config_manual_clicked() {
   var phValue = document.getElementById("ph_manual_slider").value;
   var ppmValue = document.getElementById("ppm_manual_slider").value;
   WriteManualToFirebase(brightnessValue, phValue, ppmValue);
-  firebase.database().ref("update_data").set(1);
   alert("Update Successfully");
 }
 
@@ -148,7 +145,6 @@ function toggleMode() {
   // Kiểm tra trạng thái hiện tại của toggleSwitch
   if (toggleSwitch.checked) {
     firebase.database().ref("Check_mode").set(1);
-    firebase.database().ref("update_data").set(1);
     alert("Turn on auto control mode!!!");
     btn.setAttribute("disabled", true);
   } else {
@@ -182,23 +178,35 @@ function toggleMode() {
 // });
 
 //Update time auto detect update from fb
-var value_hour_detect_auto = firebase.database().ref("Timer_auto_detect").child("hour");
+var value_hour_detect_auto = firebase
+  .database()
+  .ref("Timer_auto_detect")
+  .child("hour");
 value_hour_detect_auto.on("value", (snap) => {
   document.getElementById("hour_detect_auto").value = snap.val();
 });
 
-var value_min_detect_auto = firebase.database().ref("Timer_auto_detect").child("min");
+var value_min_detect_auto = firebase
+  .database()
+  .ref("Timer_auto_detect")
+  .child("min");
 value_min_detect_auto.on("value", (snap) => {
   document.getElementById("min_detect_auto").value = snap.val();
 });
 
 //Update time auto lighting update from fb
-var value_hour_lighting_auto = firebase.database().ref("Timer_lighting").child("hour");
+var value_hour_lighting_auto = firebase
+  .database()
+  .ref("Timer_lighting")
+  .child("hour");
 value_hour_lighting_auto.on("value", (snap) => {
   document.getElementById("hour_lighting_auto").value = snap.val();
 });
 
-var value_min_lighting_auto = firebase.database().ref("Timer_lighting").child("min");
+var value_min_lighting_auto = firebase
+  .database()
+  .ref("Timer_lighting")
+  .child("min");
 value_min_lighting_auto.on("value", (snap) => {
   document.getElementById("min_lighting_auto").value = snap.val();
 });
@@ -210,7 +218,7 @@ var valueled = firebase.database().ref("Auto_1").child("led");
 valueled.on("value", (snap) => {
   document.getElementById("brightness_auto_1_slider").value = snap.val();
   document.getElementById("brightness_auto_1_Value").textContent =
-    snap.val() + "%";
+    snap.val() + " %";
 });
 
 var valueled = firebase.database().ref("Auto_1").child("ph");
@@ -238,7 +246,7 @@ function change_brightness_auto_1() {
     "brightness_auto_1_slider"
   ).value;
   document.getElementById("brightness_auto_1_Value").textContent =
-    brightnessValue + "%";
+    brightnessValue + " %";
 }
 
 function change_time_auto_1() {
@@ -265,7 +273,7 @@ valueled.on("value", (snap) => {
   console.log("led: " + snap.val());
   document.getElementById("brightness_auto_2_slider").value = snap.val();
   document.getElementById("brightness_auto_2_Value").textContent =
-    snap.val() + "%";
+    snap.val() + " %";
 });
 
 var valueled = firebase.database().ref("Auto_2").child("ph");
@@ -296,7 +304,7 @@ function change_brightness_auto_2() {
     "brightness_auto_2_slider"
   ).value;
   document.getElementById("brightness_auto_2_Value").textContent =
-    brightnessValue + "%";
+    brightnessValue + " %";
 }
 
 function change_time_auto_2() {
@@ -334,17 +342,17 @@ function WriteAuto2ToFirebase(brightnessValue, timeValue, phValue, ppmValue) {
   });
 }
 
-function WriteTimerDetectToFirebase(hour,min) {
+function WriteTimerDetectToFirebase(hour, min) {
   firebase.database().ref("Timer_auto_detect").set({
-    hour:hour,
-    min:min,
+    hour: hour,
+    min: min,
   });
 }
 
-function WriteTimerLightingToFirebase(hour,min) {
+function WriteTimerLightingToFirebase(hour, min) {
   firebase.database().ref("Timer_lighting").set({
-    hour:hour,
-    min:min,
+    hour: hour,
+    min: min,
   });
 }
 
@@ -374,9 +382,8 @@ function config_auto_clicked() {
   // firebase.database().ref("Day").set(day);
   WriteAuto1ToFirebase(brightnessValue1, timeValue1, phValue1, ppmValue1);
   WriteAuto2ToFirebase(brightnessValue2, timeValue2, phValue2, ppmValue2);
-  WriteTimerDetectToFirebase(hour_detect_auto,min_detect_auto)
-  WriteTimerLightingToFirebase(hour_lighting,min_lighting)
-  firebase.database().ref("update_data").set(1);
+  WriteTimerDetectToFirebase(hour_detect_auto, min_detect_auto);
+  WriteTimerLightingToFirebase(hour_lighting, min_lighting);
   alert("Update Successfully");
 }
 
@@ -508,10 +515,6 @@ statePlantRef
                 <div class="card__content | flow">
                   <div class="card__content--container | flow">
                     <h2 class="card__title">Cây số ${plantName}</h2>
-                    <p class="card__description">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
-                      in labore laudantium deserunt fugiat numquam.
-                    </p>
                   </div>
                 </div>
                 `;
