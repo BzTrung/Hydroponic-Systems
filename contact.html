@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="stylesheet" href="./contact.css" />
+    <link rel="stylesheet" href="./responsive.css" />
+    <title>Smart Garden</title>
+  </head>
+  <body>
+    <div id="main">
+      <nav id="navbar" class="">
+        <div class="nav-wrapper">
+          <!-- Navbar Logo -->
+          <div class="logo">
+            <!-- Logo Placeholder for Inlustration -->
+            <a href="home.html"
+              ><i class="fa-solid fa-cannabis"></i> SMART GARDEN</a
+            >
+          </div>
+
+          <!-- Navbar Links -->
+          <ul id="menu">
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./config.html">Config</a></li>
+            <li><a href="./camera.html">Camera</a></li>
+            <li class="active"><a href="./contact.html">Contact</a></li>
+            <li><a href="./warning.html">Warning</a></li>
+            <li>
+              <a href="#" class="action_btn" onclick="logout()">Log out</a>
+            </li>
+          </ul>
+          <div class="menuIcon">
+            <span class="icon icon-bars"></span>
+            <span class="icon icon-bars overlay"></span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="overlay-menu">
+        <ul id="menu">
+          <li><a href="./home.html">Home</a></li>
+          <li><a href="./config.html">Config</a></li>
+          <li><a href="./camera.html">Camera</a></li>
+          <li class="active"><a href="./contact.html">Contact</a></li>
+          <li><a href="./warning.html">Warning</a></li>
+          <li>
+            <a href="#" class="action_btn" onclick="logout()">Log out</a>
+          </li>
+        </ul>
+      </div>
+      <div id="content">
+        <!-- Begin About Section -->
+        <div id="band" class="content-section">
+          <h2 class="section-heading">Team H2T</h2>
+          <p class="about-text">
+           
+          </p>
+          <div class="row member-list">
+            <div class="mt-32 s-col-full col col-third text-center">
+              <p class="member-name">Lê Đình Hùng</p>
+              <img src="./image/hung_image.jpg" alt="" class="member-avatar" />
+            </div>
+            <div class="mt-32 s-col-full col col-third text-center">
+              <p class="member-name">Nguyễn Bá Huy</p>
+              <img src="./image/huy_image.jpg" alt="" class="member-avatar" />
+            </div>
+            <div class="mt-32 s-col-full col col-third text-center">
+              <p class="member-name">Nguyễn Trí Trung</p>
+              <img src="./image/trung_image.PNG" alt="" class="member-avatar" />
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <!-- End About Section -->
+        <!-- Begin Contact Section -->
+        <div id="contact" class="content-section">
+          <h2 class="section-heading">CONTACT</h2>
+          <div class="row contact-content">
+            <div class="col col-half s-col-full contact-info">
+              <p><i class="ti-location-pin"></i>Chicago, US</p>
+              <p>
+                <i class="ti-mobile"></i>Phone:
+                <a href="tel:+00 151515">+00 151515</a>
+              </p>
+              <p>
+                <i class="ti-email"></i>Email:
+                <a href="mailto:mail@mail.com">mail@mail.com</a>
+              </p>
+            </div>
+            <div class="col col-half s-col-full contact-form">
+              <form action="">
+                <div class="row">
+                  <div class="col col-half s-col-full">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      required
+                      placeholder="Name"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="col col-half s-col-full s-mt-8">
+                    <input
+                      type="email"
+                      name=""
+                      id=""
+                      required
+                      placeholder="Email"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="row mt-8">
+                  <div class="col col-full">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      required
+                      placeholder="Message"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <input
+                  type="submit"
+                  class="contact-submit-btn btn mt-16 pull-right s-full-width"
+                  value="SEND"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- End Contact Section -->
+        <!-- Begin Map -->
+        <div id="map" class="map-section">
+          <img src="/assets/img/map.jpg" alt="" />
+        </div>
+        <!-- End Map -->
+      </div>
+    </div>
+
+    <script>
+      const toggleBtn = document.querySelector(".toggle_btn");
+      const toggleBtnIcon = document.querySelector(".toggle_btn i");
+      const dropDownMenu = document.querySelector(".dropdown_menu");
+
+      toggleBtn.onclick = function () {
+        dropDownMenu.classList.toggle("open");
+        const isOpen = dropDownMenu.classList.contains("open");
+
+        toggleBtnIcon.classList = isOpen
+          ? "fa-solid fa-xmark"
+          : "fa-solid fa-bars";
+      };
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+    <!-- <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBA6yTZp555yZFXkCDMw93GQqe_7A58N_0",
+          authDomain: "esp-firebase-f07dc.firebaseapp.com",
+          databaseURL: "https://esp-firebase-f07dc-default-rtdb.firebaseio.com",
+          projectId: "esp-firebase-f07dc",
+          storageBucket: "esp-firebase-f07dc.appspot.com",
+          messagingSenderId: "313931083002",
+          appId: "1:313931083002:web:de4674ef289e2a66972d43"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script> -->
+    <script src="firebase.js"></script>
+    <script src="main.js"></script>
+    <script src="./header.js"></script>
+  </body>
+</html>
