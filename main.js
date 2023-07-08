@@ -24,10 +24,10 @@ var valueStage = firebase.database().ref("grown_up");
 valueStage.on("value", (snap) => {
   if (snap.val() == 0) {
     console.log("Stage: cây non  ");
-    document.getElementById("plant_stage").innerHTML = " cây con";
+    document.getElementById("plant_stage").innerHTML = "Immature";
   } else {
     console.log("Stage: cây non  ");
-    document.getElementById("plant_stage").innerHTML = " cây trưởng thành";
+    document.getElementById("plant_stage").innerHTML = " Mature";
   }
 });
 
@@ -514,7 +514,7 @@ statePlantRef
                 />
                 <div class="card__content | flow">
                   <div class="card__content--container | flow">
-                    <h2 class="card__title">Cây số ${plantName}</h2>
+                    <h2 class="card__title">Plant ${plantName}</h2>
                   </div>
                 </div>
                 `;
