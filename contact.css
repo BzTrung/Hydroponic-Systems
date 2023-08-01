@@ -375,3 +375,15 @@ html {
   width: 100%;
   outline: none;
 }
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Định dạng chữ Temperature */
+.text {
+  font-size: 24px;
+  font-weight: bold;
+}
